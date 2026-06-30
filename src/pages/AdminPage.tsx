@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { Plus, Trash2, Save, ArrowLeft, Image as ImageIcon, Upload, Search, Edit3, X, Check, AlertCircle } from 'lucide-react';
+import { Plus, Trash2, Save, ArrowLeft, Image as ImageIcon, Upload, Search, Edit3, X, Check, AlertCircle, Download } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { CATEGORIES, type Product } from '@/data/mock';
 
@@ -90,16 +90,37 @@ export function AdminPage() {
   function handleImageUpload(e: React.ChangeEvent<HTMLInputElement>) {
     const file = e.target.files?.[0];
     if (!file) return;
-    const reader = new FileReader();
-    reader.onload = (ev) => {
+
+    const canvas = document.createElement('canvas');
+    const img = new Image();
+    const objectUrl = URL.createObjectURL(file);
+
+    img.onload = () => {
+      URL.revokeObjectURL(objectUrl);
+      const MAX = 1200;
+      let { width, height } = img;
+      if (width > MAX || height > MAX) {
+        if (width > height) { height = Math.round((height * MAX) / width); width = MAX; }
+        else { width = Math.round((width * MAX) / height); height = MAX; }
+      }
+      canvas.width = width;
+      canvas.height = height;
+      canvas.getContext('2d')!.drawImage(img, 0, 0, width, height);
+      const compressed = canvas.toDataURL('image/jpeg', 0.85);
       setForm(prev => ({
         ...prev,
-        imageData: ev.target?.result as string,
-        imagePreview: ev.target?.result as string,
-        imageFileName: file.name,
+        imageData: compressed,
+        imagePreview: compressed,
+        imageFileName: file.name.replace(/\.[^.]+$/, '.jpg'),
       }));
     };
-    reader.readAsDataURL(file);
+
+    img.onerror = () => {
+      URL.revokeObjectURL(objectUrl);
+      showMessage('error', 'Failed to load image. Please try another file.');
+    };
+
+    img.src = objectUrl;
     e.target.value = '';
   }
 
@@ -171,6 +192,40 @@ export function AdminPage() {
     }
   }
 
+  async function handleExport() {
+    if (products.length === 0) { showMessage('error', 'No products to export'); return; }
+    showMessage('success', 'Preparing export...');
+
+    const productsWithBase64 = await Promise.all(
+      products.map(async (p) => {
+        let image = p.image;
+        if (image && image.startsWith('/products/')) {
+          try {
+            const res = await fetch(image);
+            const blob = await res.blob();
+            image = await new Promise<string>((resolve, reject) => {
+              const reader = new FileReader();
+              reader.onload = () => resolve(reader.result as string);
+              reader.onerror = reject;
+              reader.readAsDataURL(blob);
+            });
+          } catch { /* keep original path if fetch fails */ }
+        }
+        return { ...p, image };
+      })
+    );
+
+    const json = JSON.stringify(productsWithBase64, null, 2);
+    const blob = new Blob([json], { type: 'application/json' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = 'products.json';
+    a.click();
+    URL.revokeObjectURL(url);
+    showMessage('success', `Exported ${products.length} products!`);
+  }
+
   const filteredProducts = products.filter(p => {
     const matchesSearch = !searchQuery ||
       p.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
@@ -196,13 +251,24 @@ export function AdminPage() {
                 {products.length} product{products.length !== 1 ? 's' : ''} in database
               </p>
             </div>
-            <button
-              onClick={() => { resetForm(); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
-              className="flex items-center gap-2 px-5 py-2.5 bg-luxury-charcoal text-white rounded-lg hover:bg-black transition-colors text-sm font-medium"
-            >
-              <Plus className="w-4 h-4" />
-              Add Product
-            </button>
+            <div className="flex items-center gap-3">
+              <button
+                onClick={handleExport}
+                disabled={products.length === 0}
+                className="flex items-center gap-2 px-5 py-2.5 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 transition-colors text-sm font-medium disabled:opacity-40 disabled:cursor-not-allowed"
+                title="Download products.json for Netlify deployment"
+              >
+                <Download className="w-4 h-4" />
+                Export JSON
+              </button>
+              <button
+                onClick={() => { resetForm(); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
+                className="flex items-center gap-2 px-5 py-2.5 bg-luxury-charcoal text-white rounded-lg hover:bg-black transition-colors text-sm font-medium"
+              >
+                <Plus className="w-4 h-4" />
+                Add Product
+              </button>
+            </div>
           </div>
         </div>
 

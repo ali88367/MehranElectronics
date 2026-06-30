@@ -8,6 +8,7 @@
     "server": "tsx server/index.ts",
     "start": "concurrently \"npm run server\" \"npm run dev\"",
     "build": "vite build",
+    "start:prod": "npm run build && tsx server/index.ts",
     "preview": "vite preview",
     "clean": "rm -rf dist",
     "lint": "tsc --noEmit"

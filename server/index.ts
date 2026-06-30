@@ -5,12 +5,16 @@ import { fileURLToPath } from 'url';
 import db from './db.js';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
-const UPLOAD_DIR = path.join(__dirname, '..', 'public', 'products');
+const ROOT_DIR = path.join(__dirname, '..');
+const UPLOAD_DIR = path.join(ROOT_DIR, 'public', 'products');
 
 fs.mkdirSync(UPLOAD_DIR, { recursive: true });
 
 const app = express();
-app.use(express.json({ limit: '20mb' }));
+app.use(express.json({ limit: '50mb' }));
+
+// Serve uploaded product images and other public assets
+app.use(express.static(path.join(ROOT_DIR, 'public')));
 
 // GET all products
 app.get('/api/products', (_req, res) => {
@@ -71,7 +75,7 @@ app.put('/api/products/:id', (req, res) => {
   if (imageData && imageFileName) {
     // Delete old image if it exists
     if (existing.image) {
-      const oldPath = path.join(__dirname, '..', 'public', existing.image);
+      const oldPath = path.join(ROOT_DIR, 'public', existing.image.replace(/^\//, ''));
       if (fs.existsSync(oldPath)) fs.unlinkSync(oldPath);
     }
     const safeName = imageFileName.toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9.\-]/g, '');
@@ -97,7 +101,7 @@ app.delete('/api/products/:id', (req, res) => {
   if (!existing) return res.status(404).json({ error: 'Product not found' });
 
   if (existing.image) {
-    const imgPath = path.join(__dirname, '..', 'public', existing.image);
+    const imgPath = path.join(ROOT_DIR, 'public', existing.image.replace(/^\//, ''));
     if (fs.existsSync(imgPath)) fs.unlinkSync(imgPath);
   }
 
@@ -111,7 +115,20 @@ app.get('/api/categories', (_req, res) => {
   res.json(rows.map(r => r.category));
 });
 
-const PORT = 3001;
-app.listen(PORT, () => {
-  console.log(`API server running on http://localhost:${PORT}`);
+// Serve built React app in production (when dist/ exists)
+const distDir = path.join(ROOT_DIR, 'dist');
+if (fs.existsSync(distDir)) {
+  app.use(express.static(distDir));
+  // SPA fallback — serve index.html for any non-API route
+  app.get('*', (_req, res) => {
+    res.sendFile(path.join(distDir, 'index.html'));
+  });
+}
+
+const PORT = process.env.PORT ? parseInt(process.env.PORT) : 3001;
+app.listen(PORT, '0.0.0.0', () => {
+  console.log(`Server running on http://0.0.0.0:${PORT}`);
+  if (fs.existsSync(distDir)) {
+    console.log(`Serving built app from dist/`);
+  }
 });
