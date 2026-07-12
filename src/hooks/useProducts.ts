@@ -4,20 +4,17 @@ import staticProductsJson from '@/data/products.json';
 
 const STATIC_PRODUCTS = staticProductsJson as unknown as Product[];
 
-// If products.json has real data, use it. Otherwise fall back to mock.
+// Bundled snapshot used only for instant first paint; the API (backed by
+// src/data/products.json on disk) is always fetched to pick up admin edits.
 const INITIAL: Product[] = STATIC_PRODUCTS.length > 0 ? STATIC_PRODUCTS : MOCK_PRODUCTS;
 
 let cachedProducts: Product[] | null = null;
 
 export function useProducts() {
   const [products, setProducts] = useState<Product[]>(cachedProducts || INITIAL);
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(!cachedProducts);
 
   useEffect(() => {
-    // If we already have static products committed in products.json, no API needed
-    if (STATIC_PRODUCTS.length > 0) return;
-    if (cachedProducts) return;
-
     fetch('/api/products')
       .then(r => r.json())
       .then((data: Product[]) => {

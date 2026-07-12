@@ -87,7 +87,7 @@ export function ProductGrid({ title, products, viewAllLink }: ProductGridProps) 
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.05 }}
-              className="min-w-[220px] w-[220px] sm:min-w-[250px] sm:w-[250px] lg:min-w-[270px] lg:w-[270px] shrink-0 snap-start"
+              className="min-w-[260px] w-[260px] sm:min-w-[300px] sm:w-[300px] lg:min-w-[340px] lg:w-[340px] shrink-0 snap-start"
             >
               <ProductCard product={product} />
             </motion.div>

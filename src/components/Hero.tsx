@@ -7,7 +7,7 @@ import { cn } from '@/lib/utils';
 const SLIDES = [
   {
     id: 1,
-    image: '/banner1.png',
+    image: '/banner11.png',
     heading: 'Orchestrating the Art of Living',
     subtext: 'A symphony of design and performance, curated for the uncompromising.',
     buttonText: 'Explore Collection',
@@ -16,22 +16,13 @@ const SLIDES = [
   },
   {
     id: 2,
-    image: '/banner1.png',
+    image: '/banner1122.png',
     heading: 'Where Innovation Meets Elegance',
     subtext: 'Intelligent solutions designed for the sophisticated home.',
     buttonText: 'View Smart Home',
     link: '/category/smart-home',
     content: false
   },
-  {
-    id: 3,
-    image: 'https://images.unsplash.com/photo-1593359677879-a4bb92f829d1?auto=format&fit=crop&q=80&w=2000',
-    heading: 'Engineered for Perfection',
-    subtext: 'Unrivaled quality. Timeless style. The standard you deserve.',
-    buttonText: 'Discover More',
-    link: '/about',
-    content: true
-  }
 ];
 
 export function Hero() {

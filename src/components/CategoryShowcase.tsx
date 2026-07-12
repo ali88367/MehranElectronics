@@ -3,10 +3,14 @@ import { Link } from 'react-router-dom';
 import { motion } from 'motion/react';
 import { CATEGORIES } from '@/data/mock';
 
+const HIDDEN_ON_HOME = new Set(['ovens', 'fan', 'cooler', 'blender', 'juicer', 'air-fryer']);
+
 export function CategoryShowcase() {
+  const homeCategories = CATEGORIES.filter(c => !HIDDEN_ON_HOME.has(c.id));
+
   return (
     <section className="py-16 bg-white">
-      <div className="container mx-auto px-6">
+      <div className="mx-auto px-6 max-w-[1800px]">
         <div className="flex justify-between items-end mb-8">
           <div>
             <motion.h2
@@ -21,19 +25,19 @@ export function CategoryShowcase() {
           </div>
         </div>
 
-        <div className="flex gap-4 overflow-x-auto scrollbar-hide pb-4 -mx-6 px-6 snap-x snap-mandatory">
-          {CATEGORIES.map((category, index) => (
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4">
+          {homeCategories.map((category, index) => (
             <Link
               key={category.id}
               to={`/category/${category.id}`}
-              className="group block shrink-0 snap-start"
+              className="group block"
             >
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.04 }}
-                className="relative overflow-hidden w-[150px] sm:w-[170px] md:w-[190px] aspect-[3/4] shadow-md group-hover:shadow-xl transition-all duration-500 rounded-sm"
+                className="relative overflow-hidden w-full aspect-[3/4] shadow-md group-hover:shadow-xl transition-all duration-500 rounded-sm"
               >
                 <div
                   className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-110"

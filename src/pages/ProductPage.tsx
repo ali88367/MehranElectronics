@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useParams, Link, useLocation } from 'react-router-dom';
 import { motion } from 'motion/react';
-import { MessageCircle, Check, Truck, ShieldCheck, ArrowLeft, Phone } from 'lucide-react';
+import { MessageCircle, Check, Truck, ShieldCheck, ArrowLeft } from 'lucide-react';
 import { useProducts } from '@/hooks/useProducts';
 import { formatPrice } from '@/lib/utils';
 import { ProductCard } from '@/components/ProductGrid';
@@ -60,18 +60,6 @@ export function ProductPage() {
                 className="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
               />
             </div>
-            <div className="grid grid-cols-4 gap-4">
-              {[1, 2, 3, 4].map((i) => (
-                <div key={i} className="aspect-square bg-gray-100 rounded-lg overflow-hidden cursor-pointer opacity-70 hover:opacity-100 transition-opacity">
-                  <img
-                    src={product.image}
-                    alt="Thumbnail"
-                    loading="lazy"
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-              ))}
-            </div>
           </motion.div>
 
           {/* Right: Details */}
@@ -117,13 +105,6 @@ export function ProductPage() {
               >
                 <MessageCircle className="w-5 h-5" />
                 <span className="uppercase tracking-widest font-semibold text-sm">Order on WhatsApp</span>
-              </a>
-              <a
-                href="tel:+923126610110"
-                className="flex items-center justify-center space-x-3 py-4 px-8 border-2 border-luxury-charcoal text-luxury-charcoal rounded-lg hover:bg-luxury-charcoal hover:text-white transition-all"
-              >
-                <Phone className="w-5 h-5" />
-                <span className="uppercase tracking-widest font-semibold text-sm">Call Us</span>
               </a>
             </div>
 

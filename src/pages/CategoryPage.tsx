@@ -39,9 +39,13 @@ export function CategoryPage() {
 
   const categoryName = id ? CATEGORY_MAP[id] : undefined;
   const category = CATEGORIES.find(c => c.id === id);
+  const isHomeAppliances = id === 'home' || id === 'home-appliances';
+  const matchingCategories = isHomeAppliances
+    ? ['Home Appliances', 'Ovens', 'Fans', 'Coolers', 'Blenders', 'Juicers', 'Air Fryers']
+    : [categoryName];
 
   const products = useMemo(() => {
-    let filtered = PRODUCTS.filter(p => p.category === categoryName);
+    let filtered = PRODUCTS.filter(p => matchingCategories.includes(p.category));
     switch (sortBy) {
       case 'price-low':
         return [...filtered].sort((a, b) => a.price - b.price);
@@ -52,7 +56,7 @@ export function CategoryPage() {
       default:
         return filtered;
     }
-  }, [categoryName, sortBy]);
+  }, [id, categoryName, sortBy]);
 
   if (!categoryName) {
     return (
@@ -170,7 +174,7 @@ export function CategoryPage() {
             <Link to="/" className="text-luxury-charcoal underline">Browse all products</Link>
           </div>
         ) : (
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
             {products.map((product, index) => (
               <motion.div
                 key={product.id}

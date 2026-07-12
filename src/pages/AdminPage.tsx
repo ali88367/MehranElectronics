@@ -382,16 +382,16 @@ export function AdminPage() {
                 />
               </div>
 
-              <div>
+              <div className="md:col-span-2">
                 <label className="block text-sm font-medium text-luxury-charcoal mb-2">
                   Features <span className="text-gray-400 font-normal">(comma separated)</span>
                 </label>
-                <input
-                  type="text"
+                <textarea
                   value={form.features}
                   onChange={(e) => setForm(prev => ({ ...prev, features: e.target.value }))}
                   placeholder="e.g. Inverter, 1.5 Ton, WiFi Control"
-                  className="w-full px-4 py-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-luxury-charcoal/20 focus:border-luxury-charcoal transition-all"
+                  rows={8}
+                  className="w-full px-4 py-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-luxury-charcoal/20 focus:border-luxury-charcoal transition-all resize-y"
                 />
               </div>
 

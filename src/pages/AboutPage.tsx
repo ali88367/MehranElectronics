@@ -93,7 +93,7 @@ export function AboutPage() {
             >
               <div className="aspect-[4/5] bg-gray-100 rounded-2xl overflow-hidden">
                 <img
-                  src="/banner1.png"
+                  src="/banner11.png"
                   alt="New Mehran Electronics Store"
                   className="w-full h-full object-cover"
                 />

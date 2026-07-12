@@ -24,13 +24,9 @@ export function Home() {
   const ledTvs = PRODUCTS.filter(p => p.category === 'LED TVs').slice(0, 10);
   const washingMachines = PRODUCTS.filter(p => p.category === 'Washing Machines').slice(0, 10);
   const deepFreezers = PRODUCTS.filter(p => p.category === 'Deep Freezers').slice(0, 10);
-  const ovens = PRODUCTS.filter(p => p.category === 'Ovens').slice(0, 10);
-  const fans = PRODUCTS.filter(p => p.category === 'Fans').slice(0, 10);
-  const coolers = PRODUCTS.filter(p => p.category === 'Coolers').slice(0, 10);
-  const blenders = PRODUCTS.filter(p => p.category === 'Blenders').slice(0, 10);
-  const juicers = PRODUCTS.filter(p => p.category === 'Juicers').slice(0, 10);
-  const airFryers = PRODUCTS.filter(p => p.category === 'Air Fryers').slice(0, 10);
-  const homeAppliances = PRODUCTS.filter(p => p.category === 'Home Appliances').slice(0, 10);
+  const homeAppliances = PRODUCTS.filter(p =>
+    ['Home Appliances', 'Ovens', 'Fans', 'Coolers', 'Blenders', 'Juicers', 'Air Fryers'].includes(p.category)
+  ).slice(0, 10);
 
   return (
     <main>
@@ -196,36 +192,6 @@ export function Home() {
       </div>
 
       <StatementBanner />
-
-      {/* 8. Ovens */}
-      <div className="bg-white">
-        <ProductGrid title="Ovens" products={ovens} viewAllLink="/category/ovens" />
-      </div>
-
-      {/* 9. Fans */}
-      <div className="bg-luxury-grey/30">
-        <ProductGrid title="Fans" products={fans} viewAllLink="/category/fan" />
-      </div>
-
-      {/* 10. Coolers */}
-      <div className="bg-white">
-        <ProductGrid title="Coolers" products={coolers} viewAllLink="/category/cooler" />
-      </div>
-
-      {/* 11. Blenders */}
-      <div className="bg-luxury-grey/30">
-        <ProductGrid title="Blenders" products={blenders} viewAllLink="/category/blender" />
-      </div>
-
-      {/* 12. Juicers */}
-      <div className="bg-white">
-        <ProductGrid title="Juicers" products={juicers} viewAllLink="/category/juicer" />
-      </div>
-
-      {/* 13. Air Fryers */}
-      <div className="bg-luxury-grey/30">
-        <ProductGrid title="Air Fryers" products={airFryers} viewAllLink="/category/air-fryer" />
-      </div>
     </main>
   );
 }

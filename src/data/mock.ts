@@ -15,17 +15,17 @@ export const CATEGORIES = [
   {
     id: 'ac',
     name: 'Air Conditioners',
-    image: '/4.png',
+    image: '/categories/ac2.png',
   },
   {
     id: 'deep-freeze',
     name: 'Deep Freezers',
-    image: '/3.png',
+    image: '/categories/df.png',
   },
   {
     id: 'refrigerators',
     name: 'Refrigerators',
-    image: '/3.png',
+    image: '/categories/ref.png',
   },
   {
     id: 'ovens',
@@ -35,12 +35,12 @@ export const CATEGORIES = [
   {
     id: 'tv',
     name: 'LED TVs',
-    image: '/2.png',
+    image: '/categories/tv.png',
   },
   {
     id: 'washing-machine',
     name: 'Washing Machines',
-    image: '/2.png',
+    image: '/categories/wm.png',
   },
   {
     id: 'fan',
@@ -70,7 +70,7 @@ export const CATEGORIES = [
   {
     id: 'home-appliances',
     name: 'Home Appliances',
-    image: '/2.png',
+    image: '/home.png',
   },
 ];
 
