@@ -40,7 +40,7 @@ export function Hero() {
   const prevSlide = () => setCurrentSlide((prev) => (prev - 1 + SLIDES.length) % SLIDES.length);
 
   return (
-    <section className="relative h-screen w-full overflow-hidden bg-luxury-charcoal">
+    <section className="relative h-dvh w-full overflow-hidden bg-luxury-charcoal">
       <AnimatePresence mode="wait">
         <motion.div
           key={currentSlide}
@@ -89,28 +89,28 @@ export function Hero() {
         </div>
       )}
 
-      <div className="absolute bottom-10 right-10 z-20 flex space-x-4">
+      <div className="absolute bottom-6 right-4 md:bottom-10 md:right-10 z-20 flex space-x-3 md:space-x-4">
         <button
           onClick={prevSlide}
-          className="p-3 border border-white/20 bg-black/20 text-white hover:bg-white hover:text-luxury-charcoal transition-all rounded-full"
+          className="p-2.5 md:p-3 border border-white/20 bg-black/20 text-white hover:bg-white hover:text-luxury-charcoal transition-all rounded-full"
         >
-          <ChevronLeft className="w-5 h-5" />
+          <ChevronLeft className="w-4 h-4 md:w-5 md:h-5" />
         </button>
         <button
           onClick={nextSlide}
-          className="p-3 border border-white/20 bg-black/20 text-white hover:bg-white hover:text-luxury-charcoal transition-all rounded-full"
+          className="p-2.5 md:p-3 border border-white/20 bg-black/20 text-white hover:bg-white hover:text-luxury-charcoal transition-all rounded-full"
         >
-          <ChevronRight className="w-5 h-5" />
+          <ChevronRight className="w-4 h-4 md:w-5 md:h-5" />
         </button>
       </div>
 
-      <div className="absolute bottom-10 left-1/2 -translate-x-1/2 z-20 flex space-x-3">
+      <div className="absolute bottom-6 md:bottom-10 left-1/2 -translate-x-1/2 z-20 flex space-x-2 md:space-x-3">
         {SLIDES.map((_, index) => (
           <button
             key={index}
             onClick={() => setCurrentSlide(index)}
             className={cn(
-              'w-12 h-1 transition-all duration-300',
+              'w-8 md:w-12 h-1 transition-all duration-300',
               currentSlide === index ? 'bg-white' : 'bg-white/30 hover:bg-white/50'
             )}
           />

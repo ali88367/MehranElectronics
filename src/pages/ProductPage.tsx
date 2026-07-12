@@ -30,7 +30,7 @@ export function ProductPage() {
   const relatedProducts = PRODUCTS.filter(p => p.category === product.category && p.id !== product.id).slice(0, 4);
 
   const whatsappMessage = encodeURIComponent(
-    `Hello New Mehran Electronics!\n\nI would like to order:\n\n*Product:* ${product.name}${product.model ? `\n*Model:* ${product.model}` : ''}\n*Price:* ${formatPrice(product.price)}\n*Image:* ${product.image.startsWith('http') ? product.image : window.location.origin + product.image}\n\nPlease confirm availability.`
+    `Hello New Mehran Electronics!\n\nI would like to order:\n\n*Product:* ${product.name}${product.model ? `\n*Model:* ${product.model}` : ''}\n*Price:* ${formatPrice(product.price)}\n\nPlease confirm availability.`
   );
 
   return (
