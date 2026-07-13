@@ -4,7 +4,7 @@ import { motion } from 'motion/react';
 
 export function StatementBanner() {
   return (
-    <section className="py-32 bg-luxury-charcoal text-white relative overflow-hidden">
+    <section className="py-32 bg-brand text-white relative overflow-hidden">
       <div className="absolute inset-0 opacity-10 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')]"></div>
       <div className="container mx-auto px-6 relative z-10 text-center">
         <motion.div
@@ -21,7 +21,7 @@ export function StatementBanner() {
           </p>
           <Link
             to="/about"
-            className="inline-block px-10 py-4 border border-white hover:bg-white hover:text-luxury-charcoal transition-all duration-300 uppercase tracking-widest text-sm font-semibold"
+            className="inline-block px-10 py-4 border border-white hover:bg-white hover:text-brand transition-all duration-300 uppercase tracking-widest text-sm font-semibold"
           >
             Discover More
           </Link>

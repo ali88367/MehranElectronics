@@ -102,11 +102,11 @@ export function SearchModal({ isOpen, onClose }: SearchModalProps) {
                         onClick={onClose}
                         className="flex items-center gap-4 px-6 py-4 hover:bg-gray-50 transition-colors group"
                       >
-                        <div className="w-16 h-16 bg-gray-100 rounded-lg overflow-hidden shrink-0">
+                        <div className="w-16 h-16 bg-white border border-gray-100 rounded-lg overflow-hidden shrink-0 p-1.5">
                           <img
                             src={product.image}
                             alt={product.name}
-                            className="w-full h-full object-cover"
+                            className="w-full h-full object-contain"
                           />
                         </div>
                         <div className="flex-1 min-w-0">
@@ -130,7 +130,7 @@ export function SearchModal({ isOpen, onClose }: SearchModalProps) {
                         <button
                           key={term}
                           onClick={() => setQuery(term)}
-                          className="px-4 py-2 bg-gray-50 text-gray-600 text-sm rounded-full hover:bg-luxury-charcoal hover:text-white transition-all"
+                          className="px-4 py-2 bg-gray-50 text-gray-600 text-sm rounded-full hover:bg-brand hover:text-white transition-all"
                         >
                           {term}
                         </button>

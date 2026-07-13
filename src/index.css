@@ -1,15 +1,21 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
 @import "tailwindcss";
 
 @theme {
   --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
-  --font-serif: "Playfair Display", ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
-  
+  /* Brand headings now use the same clean sans-serif as body copy — see project feedback: no more serif/newspaper look. */
+  --font-serif: "Inter", ui-sans-serif, system-ui, sans-serif;
+
   --color-luxury-white: #FFFFFF;
   --color-luxury-grey: #F2F2F2;
   --color-luxury-charcoal: #1A1A1A;
   --color-luxury-black: #050505;
   --color-luxury-gold: #C9A962;
+
+  /* Flagship-store brand red, matching the physical shop's signage */
+  --color-brand: #D0132A;
+  --color-brand-dark: #A50E21;
+  --color-brand-light: #FCE9EB;
 }
 
 @layer base {
@@ -69,6 +75,11 @@
 
 html {
   scroll-behavior: smooth;
+}
+
+html, body {
+  max-width: 100vw;
+  overflow-x: hidden;
 }
 
 img {

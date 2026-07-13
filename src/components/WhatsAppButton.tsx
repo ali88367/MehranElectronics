@@ -55,7 +55,7 @@ export function WhatsAppButton() {
             href={whatsappLink}
             target="_blank"
             rel="noopener noreferrer"
-            className="w-14 h-14 bg-luxury-charcoal rounded-full flex items-center justify-center shadow-lg hover:bg-black hover:shadow-xl hover:scale-110 transition-all duration-300 group"
+            className="w-14 h-14 bg-green-600 rounded-full flex items-center justify-center shadow-lg hover:bg-green-700 hover:shadow-xl hover:scale-110 transition-all duration-300 group"
             onClick={() => setShowTooltip(false)}
           >
             <MessageCircle className="w-7 h-7 text-white" />

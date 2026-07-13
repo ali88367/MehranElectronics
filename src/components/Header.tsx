@@ -79,12 +79,12 @@ export function Header() {
                   to={link.href}
                   className={cn(
                     'relative text-[11px] font-semibold tracking-wider uppercase whitespace-nowrap transition-colors group py-2',
-                    location.pathname === link.href ? 'text-luxury-charcoal' : 'text-gray-400 hover:text-luxury-charcoal'
+                    location.pathname === link.href ? 'text-brand' : 'text-gray-400 hover:text-brand'
                   )}
                 >
                   {link.name}
                   <span className={cn(
-                    'absolute bottom-0 left-0 h-[2px] bg-luxury-charcoal transition-all duration-300',
+                    'absolute bottom-0 left-0 h-[2px] bg-brand transition-all duration-300',
                     location.pathname === link.href ? 'w-full' : 'w-0 group-hover:w-full'
                   )} />
                 </Link>
@@ -97,7 +97,7 @@ export function Header() {
               </button>
               <Link
                 to="/contact"
-                className="px-5 py-2 bg-luxury-charcoal text-white text-[10px] font-semibold uppercase tracking-widest transition-all hover:bg-black"
+                className="px-5 py-2 bg-brand text-white text-[10px] font-semibold uppercase tracking-widest transition-all hover:bg-brand-dark"
               >
                 Contact
               </Link>
@@ -137,7 +137,7 @@ export function Header() {
                 rel="noopener noreferrer"
                 className="p-2.5 hover:bg-gray-100 rounded-full transition-colors"
               >
-                <MessageCircle className="w-5 h-5 text-luxury-charcoal" />
+                <MessageCircle className="w-5 h-5 text-green-600" />
               </a>
               <button
                 className="p-2.5 hover:bg-gray-100 rounded-full transition-colors"
@@ -190,7 +190,7 @@ export function Header() {
                     className={cn(
                       'flex items-center justify-between px-5 py-3.5 text-[15px] font-medium transition-colors',
                       location.pathname === link.href
-                        ? 'bg-luxury-charcoal/5 text-luxury-charcoal border-r-2 border-luxury-charcoal'
+                        ? 'bg-brand/5 text-brand border-r-2 border-brand'
                         : 'text-gray-600 hover:bg-gray-50'
                     )}
                   >
@@ -220,7 +220,7 @@ export function Header() {
                   href="https://wa.me/923126610110"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center justify-center gap-2 w-full py-3.5 bg-luxury-charcoal text-white uppercase tracking-widest text-xs font-semibold hover:bg-black transition-colors"
+                  className="flex items-center justify-center gap-2 w-full py-3.5 bg-green-600 text-white uppercase tracking-widest text-xs font-semibold hover:bg-green-700 transition-colors"
                 >
                   <MessageCircle className="w-4 h-4" />
                   WhatsApp Order
@@ -228,7 +228,7 @@ export function Header() {
                 <Link
                   to="/contact"
                   onClick={() => setIsDrawerOpen(false)}
-                  className="block text-center py-3.5 border border-luxury-charcoal text-luxury-charcoal uppercase tracking-widest text-xs font-semibold hover:bg-luxury-charcoal hover:text-white transition-all"
+                  className="block text-center py-3.5 border border-brand text-brand uppercase tracking-widest text-xs font-semibold hover:bg-brand hover:text-white transition-all"
                 >
                   Contact Us
                 </Link>

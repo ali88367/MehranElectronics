@@ -263,7 +263,7 @@ export function AdminPage() {
               </button>
               <button
                 onClick={() => { resetForm(); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
-                className="flex items-center gap-2 px-5 py-2.5 bg-luxury-charcoal text-white rounded-lg hover:bg-black transition-colors text-sm font-medium"
+                className="flex items-center gap-2 px-5 py-2.5 bg-brand text-white rounded-lg hover:bg-brand-dark transition-colors text-sm font-medium"
               >
                 <Plus className="w-4 h-4" />
                 Add Product
@@ -303,8 +303,8 @@ export function AdminPage() {
               <input ref={fileInputRef} type="file" accept="image/*" onChange={handleImageUpload} className="hidden" />
               {form.imagePreview ? (
                 <div>
-                  <div className="aspect-[4/5] rounded-xl overflow-hidden bg-gray-100 border-2 border-gray-200">
-                    <img src={form.imagePreview} alt="Preview" className="w-full h-full object-cover" />
+                  <div className="aspect-square rounded-xl overflow-hidden bg-white border-2 border-gray-200 p-4">
+                    <img src={form.imagePreview} alt="Preview" className="w-full h-full object-contain" />
                   </div>
                   <div className="mt-3 flex items-center gap-3">
                     <button onClick={() => fileInputRef.current?.click()} className="text-xs text-luxury-charcoal underline hover:no-underline">
@@ -321,10 +321,10 @@ export function AdminPage() {
               ) : (
                 <button
                   onClick={() => fileInputRef.current?.click()}
-                  className="w-full aspect-[4/5] border-2 border-dashed border-gray-200 rounded-xl flex flex-col items-center justify-center gap-3 hover:border-luxury-charcoal hover:bg-gray-50 transition-all cursor-pointer group"
+                  className="w-full aspect-square border-2 border-dashed border-gray-200 rounded-xl flex flex-col items-center justify-center gap-3 hover:border-brand hover:bg-gray-50 transition-all cursor-pointer group"
                 >
-                  <div className="w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center group-hover:bg-luxury-charcoal/10 transition-colors">
-                    <Upload className="w-7 h-7 text-gray-400 group-hover:text-luxury-charcoal transition-colors" />
+                  <div className="w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center group-hover:bg-brand/10 transition-colors">
+                    <Upload className="w-7 h-7 text-gray-400 group-hover:text-brand transition-colors" />
                   </div>
                   <div className="text-center">
                     <p className="text-sm font-medium text-gray-600">Click to upload image</p>
@@ -412,7 +412,7 @@ export function AdminPage() {
                     type="checkbox"
                     checked={form.isBestSeller}
                     onChange={(e) => setForm(prev => ({ ...prev, isBestSeller: e.target.checked }))}
-                    className="w-5 h-5 rounded border-gray-300 text-luxury-charcoal focus:ring-luxury-charcoal"
+                    className="w-5 h-5 rounded border-gray-300 text-brand focus:ring-brand"
                   />
                   <span className="text-sm text-gray-600">Best Seller</span>
                 </label>
@@ -421,7 +421,7 @@ export function AdminPage() {
                     type="checkbox"
                     checked={form.isFeatured}
                     onChange={(e) => setForm(prev => ({ ...prev, isFeatured: e.target.checked }))}
-                    className="w-5 h-5 rounded border-gray-300 text-luxury-charcoal focus:ring-luxury-charcoal"
+                    className="w-5 h-5 rounded border-gray-300 text-brand focus:ring-brand"
                   />
                   <span className="text-sm text-gray-600">Featured</span>
                 </label>
@@ -433,7 +433,7 @@ export function AdminPage() {
                   disabled={saving}
                   className={cn(
                     'flex items-center justify-center gap-2 px-8 py-3 rounded-lg text-sm font-medium transition-all w-full md:w-auto',
-                    saving ? 'bg-gray-300 text-gray-500 cursor-not-allowed' : 'bg-luxury-charcoal text-white hover:bg-black'
+                    saving ? 'bg-gray-300 text-gray-500 cursor-not-allowed' : 'bg-brand text-white hover:bg-brand-dark'
                   )}
                 >
                   <Save className="w-4 h-4" />
@@ -500,9 +500,9 @@ export function AdminPage() {
                   {filteredProducts.map((product) => (
                     <tr key={product.id} className="border-b border-gray-50 hover:bg-gray-50/50 transition-colors">
                       <td className="py-3 pr-4">
-                        <div className="w-14 h-14 rounded-lg overflow-hidden bg-gray-100 shrink-0">
+                        <div className="w-14 h-14 rounded-lg overflow-hidden bg-white border border-gray-100 shrink-0 p-1">
                           {product.image ? (
-                            <img src={product.image} alt="" className="w-full h-full object-cover" />
+                            <img src={product.image} alt="" className="w-full h-full object-contain" />
                           ) : (
                             <div className="w-full h-full flex items-center justify-center">
                               <ImageIcon className="w-5 h-5 text-gray-300" />

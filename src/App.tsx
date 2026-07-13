@@ -25,7 +25,7 @@ export default function App() {
   return (
     <Router>
       <ScrollToTop />
-      <div className="min-h-screen flex flex-col font-sans text-luxury-charcoal bg-white selection:bg-luxury-charcoal selection:text-white">
+      <div className="min-h-screen flex flex-col font-sans text-luxury-charcoal bg-white selection:bg-brand selection:text-white overflow-x-hidden">
         <Header />
         <div className="flex-grow">
           <Routes>

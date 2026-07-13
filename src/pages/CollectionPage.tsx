@@ -1,5 +1,5 @@
 import React, { useEffect, useMemo, useState } from 'react';
-import { useLocation, Link } from 'react-router-dom';
+import { useLocation, Link, useSearchParams } from 'react-router-dom';
 import { motion } from 'motion/react';
 import { SlidersHorizontal, X } from 'lucide-react';
 import { CATEGORIES } from '@/data/mock';
@@ -11,6 +11,8 @@ type SortOption = 'default' | 'price-low' | 'price-high' | 'name';
 
 export function CollectionPage() {
   const { pathname } = useLocation();
+  const [searchParams] = useSearchParams();
+  const searchQuery = searchParams.get('search')?.trim().toLowerCase() || '';
   const { products: PRODUCTS } = useProducts();
   const [sortBy, setSortBy] = useState<SortOption>('default');
   const [activeCategory, setActiveCategory] = useState<string | null>(null);
@@ -25,6 +27,12 @@ export function CollectionPage() {
       ? PRODUCTS.filter(p => p.category === activeCategory)
       : [...PRODUCTS];
 
+    if (searchQuery) {
+      filtered = filtered.filter(p =>
+        p.name.toLowerCase().includes(searchQuery) || p.category.toLowerCase().includes(searchQuery)
+      );
+    }
+
     switch (sortBy) {
       case 'price-low':
         return filtered.sort((a, b) => a.price - b.price);
@@ -35,15 +43,15 @@ export function CollectionPage() {
       default:
         return filtered;
     }
-  }, [activeCategory, sortBy]);
+  }, [activeCategory, sortBy, searchQuery]);
 
   const categoryNames = CATEGORIES.map(c => c.name);
 
   return (
     <div className="min-h-screen bg-white">
       {/* Hero Banner */}
-      <div className="relative h-[35vh] min-h-[280px] bg-luxury-charcoal overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-luxury-charcoal to-gray-900" />
+      <div className="relative h-[35vh] min-h-[280px] bg-luxury-black overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-br from-luxury-black to-brand-dark" />
         <div className="absolute inset-0 opacity-5">
           <div className="absolute inset-0" style={{
             backgroundImage: `repeating-linear-gradient(45deg, transparent, transparent 35px, rgba(255,255,255,.03) 35px, rgba(255,255,255,.03) 70px)`,
@@ -53,7 +61,7 @@ export function CollectionPage() {
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="font-serif text-3xl md:text-4xl text-white mb-3"
+            className="text-3xl md:text-4xl font-semibold text-white mb-3"
           >
             Our Collection
           </motion.h1>
@@ -72,12 +80,12 @@ export function CollectionPage() {
       <div className="sticky top-[72px] z-30 bg-white/90 backdrop-blur-md border-b border-gray-100">
         <div className="container mx-auto px-6 py-4">
           {/* Category Filters */}
-          <div className="flex items-center gap-3 overflow-x-auto pb-2 scrollbar-hide">
+          <div className="flex items-center gap-2 sm:gap-3 overflow-x-auto pb-2 scrollbar-hide">
             <button
               onClick={() => setActiveCategory(null)}
               className={cn(
-                'px-4 py-2 text-xs uppercase tracking-wider whitespace-nowrap transition-all rounded-full shrink-0',
-                !activeCategory ? 'bg-luxury-charcoal text-white' : 'text-gray-500 hover:bg-gray-100 border border-gray-200'
+                'px-3 py-1.5 sm:px-4 sm:py-2 text-[10px] sm:text-xs uppercase tracking-wide sm:tracking-wider whitespace-nowrap transition-all rounded-full shrink-0',
+                !activeCategory ? 'bg-brand text-white' : 'text-gray-500 hover:bg-gray-100 border border-gray-200'
               )}
             >
               All Products
@@ -87,9 +95,9 @@ export function CollectionPage() {
                 key={name}
                 onClick={() => setActiveCategory(activeCategory === name ? null : name)}
                 className={cn(
-                  'px-4 py-2 text-xs uppercase tracking-wider whitespace-nowrap transition-all rounded-full shrink-0',
+                  'px-3 py-1.5 sm:px-4 sm:py-2 text-[10px] sm:text-xs uppercase tracking-wide sm:tracking-wider whitespace-nowrap transition-all rounded-full shrink-0',
                   activeCategory === name
-                    ? 'bg-luxury-charcoal text-white'
+                    ? 'bg-brand text-white'
                     : 'text-gray-500 hover:bg-gray-100 border border-gray-200'
                 )}
               >
@@ -100,8 +108,9 @@ export function CollectionPage() {
 
           {/* Sort + Count */}
           <div className="flex items-center justify-between mt-3 pt-3 border-t border-gray-50">
-            <p className="text-sm text-gray-500">
+            <p className="text-xs sm:text-sm text-gray-500">
               <span className="font-medium text-luxury-charcoal">{products.length}</span> products
+              {searchQuery && <span> for "<span className="text-brand">{searchQuery}</span>"</span>}
             </p>
             <div className="flex items-center gap-2">
               <button
@@ -124,7 +133,7 @@ export function CollectionPage() {
                     onClick={() => setSortBy(option.value)}
                     className={cn(
                       'px-3 py-1.5 text-xs uppercase tracking-wider transition-all rounded-full',
-                      sortBy === option.value ? 'bg-luxury-charcoal text-white' : 'text-gray-500 hover:bg-gray-100'
+                      sortBy === option.value ? 'bg-brand text-white' : 'text-gray-500 hover:bg-gray-100'
                     )}
                   >
                     {option.label}
@@ -147,7 +156,7 @@ export function CollectionPage() {
                   onClick={() => { setSortBy(option.value); setShowMobileFilters(false); }}
                   className={cn(
                     'block w-full text-left px-4 py-2 text-sm rounded-lg transition-colors',
-                    sortBy === option.value ? 'bg-luxury-charcoal text-white' : 'text-gray-600 hover:bg-gray-50'
+                    sortBy === option.value ? 'bg-brand text-white' : 'text-gray-600 hover:bg-gray-50'
                   )}
                 >
                   {option.label}

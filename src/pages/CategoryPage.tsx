@@ -72,7 +72,7 @@ export function CategoryPage() {
   return (
     <div className="min-h-screen bg-white">
       {/* Hero Banner */}
-      <div className="relative h-[40vh] min-h-[320px] bg-luxury-charcoal overflow-hidden">
+      <div className="relative h-[40vh] min-h-[320px] bg-luxury-black overflow-hidden">
         {category && (
           <div
             className="absolute inset-0 bg-cover bg-center opacity-40"
@@ -88,7 +88,7 @@ export function CategoryPage() {
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="font-serif text-3xl md:text-4xl text-white mb-3"
+            className="text-3xl md:text-4xl font-semibold text-white mb-3"
           >
             {categoryName}
           </motion.h1>
@@ -131,7 +131,7 @@ export function CategoryPage() {
                   className={cn(
                     'px-3 py-1.5 text-xs uppercase tracking-wider transition-all rounded-full',
                     sortBy === option.value
-                      ? 'bg-luxury-charcoal text-white'
+                      ? 'bg-brand text-white'
                       : 'text-gray-500 hover:bg-gray-100'
                   )}
                 >
@@ -156,7 +156,7 @@ export function CategoryPage() {
                 onClick={() => { setSortBy(option.value); setShowFilters(false); }}
                 className={cn(
                   'block w-full text-left px-4 py-2 text-sm rounded-lg transition-colors',
-                  sortBy === option.value ? 'bg-luxury-charcoal text-white' : 'text-gray-600 hover:bg-gray-50'
+                  sortBy === option.value ? 'bg-brand text-white' : 'text-gray-600 hover:bg-gray-50'
                 )}
               >
                 {option.label}

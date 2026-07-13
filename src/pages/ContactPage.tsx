@@ -15,8 +15,8 @@ export function ContactPage() {
   return (
     <div className="min-h-screen bg-white">
       {/* Hero */}
-      <div className="relative h-[35vh] min-h-[280px] bg-luxury-charcoal overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-luxury-charcoal to-gray-900" />
+      <div className="relative h-[35vh] min-h-[280px] bg-luxury-black overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-br from-luxury-black to-brand-dark" />
         <div className="relative z-10 container mx-auto px-6 h-full flex flex-col justify-end pb-12">
           <Link to="/" className="inline-flex items-center text-sm text-white/60 hover:text-white mb-6 transition-colors w-fit">
             <ArrowLeft className="w-4 h-4 mr-2" />
@@ -25,7 +25,7 @@ export function ContactPage() {
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="font-serif text-3xl md:text-4xl text-white mb-3"
+            className="text-3xl md:text-4xl font-semibold text-white mb-3"
           >
             Get in Touch
           </motion.h1>
@@ -55,8 +55,8 @@ export function ContactPage() {
 
             <div className="space-y-8">
               <div className="flex items-start gap-5">
-                <div className="w-12 h-12 bg-luxury-charcoal/5 rounded-xl flex items-center justify-center shrink-0">
-                  <MapPin className="w-5 h-5 text-luxury-charcoal" />
+                <div className="w-12 h-12 bg-brand/5 rounded-xl flex items-center justify-center shrink-0">
+                  <MapPin className="w-5 h-5 text-brand" />
                 </div>
                 <div>
                   <h3 className="font-semibold text-luxury-charcoal mb-1">Address</h3>
@@ -68,8 +68,8 @@ export function ContactPage() {
               </div>
 
               <div className="flex items-start gap-5">
-                <div className="w-12 h-12 bg-luxury-charcoal/5 rounded-xl flex items-center justify-center shrink-0">
-                  <Phone className="w-5 h-5 text-luxury-charcoal" />
+                <div className="w-12 h-12 bg-brand/5 rounded-xl flex items-center justify-center shrink-0">
+                  <Phone className="w-5 h-5 text-brand" />
                 </div>
                 <div>
                   <h3 className="font-semibold text-luxury-charcoal mb-1">Phone</h3>
@@ -79,8 +79,8 @@ export function ContactPage() {
               </div>
 
               <div className="flex items-start gap-5">
-                <div className="w-12 h-12 bg-luxury-charcoal/5 rounded-xl flex items-center justify-center shrink-0">
-                  <Mail className="w-5 h-5 text-luxury-charcoal" />
+                <div className="w-12 h-12 bg-brand/5 rounded-xl flex items-center justify-center shrink-0">
+                  <Mail className="w-5 h-5 text-brand" />
                 </div>
                 <div>
                   <h3 className="font-semibold text-luxury-charcoal mb-1">Email</h3>
@@ -89,8 +89,8 @@ export function ContactPage() {
               </div>
 
               <div className="flex items-start gap-5">
-                <div className="w-12 h-12 bg-luxury-charcoal/5 rounded-xl flex items-center justify-center shrink-0">
-                  <Clock className="w-5 h-5 text-luxury-charcoal" />
+                <div className="w-12 h-12 bg-brand/5 rounded-xl flex items-center justify-center shrink-0">
+                  <Clock className="w-5 h-5 text-brand" />
                 </div>
                 <div>
                   <h3 className="font-semibold text-luxury-charcoal mb-1">Store Hours</h3>
@@ -105,14 +105,14 @@ export function ContactPage() {
                 href={whatsappLink}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center justify-center gap-3 px-8 py-4 bg-luxury-charcoal text-white rounded-lg hover:bg-black transition-colors shadow-lg"
+                className="flex items-center justify-center gap-3 px-8 py-4 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors shadow-lg"
               >
                 <MessageCircle className="w-5 h-5" />
                 <span className="font-semibold text-sm uppercase tracking-wider">Chat on WhatsApp</span>
               </a>
               <a
                 href="tel:+923126610110"
-                className="flex items-center justify-center gap-3 px-8 py-4 border-2 border-luxury-charcoal text-luxury-charcoal rounded-lg hover:bg-luxury-charcoal hover:text-white transition-all"
+                className="flex items-center justify-center gap-3 px-8 py-4 border-2 border-brand text-brand rounded-lg hover:bg-brand hover:text-white transition-all"
               >
                 <Phone className="w-5 h-5" />
                 <span className="font-semibold text-sm uppercase tracking-wider">Call Us</span>
@@ -150,7 +150,7 @@ export function ContactPage() {
                     type="text"
                     name="name"
                     required
-                    className="w-full px-4 py-3 bg-white border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-luxury-charcoal/20 focus:border-luxury-charcoal transition-all text-sm"
+                    className="w-full px-4 py-3 bg-white border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-brand/20 focus:border-brand transition-all text-sm"
                     placeholder="Enter your name"
                   />
                 </div>
@@ -160,7 +160,7 @@ export function ContactPage() {
                     type="tel"
                     name="phone"
                     required
-                    className="w-full px-4 py-3 bg-white border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-luxury-charcoal/20 focus:border-luxury-charcoal transition-all text-sm"
+                    className="w-full px-4 py-3 bg-white border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-brand/20 focus:border-brand transition-all text-sm"
                     placeholder="+92 300 0000000"
                   />
                 </div>
@@ -170,13 +170,13 @@ export function ContactPage() {
                     name="message"
                     rows={4}
                     required
-                    className="w-full px-4 py-3 bg-white border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-luxury-charcoal/20 focus:border-luxury-charcoal transition-all text-sm resize-none"
+                    className="w-full px-4 py-3 bg-white border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-brand/20 focus:border-brand transition-all text-sm resize-none"
                     placeholder="Tell us what you're looking for..."
                   />
                 </div>
                 <button
                   type="submit"
-                  className="w-full bg-luxury-charcoal text-white py-4 rounded-lg font-semibold text-sm uppercase tracking-wider hover:bg-black transition-colors"
+                  className="w-full bg-green-600 text-white py-4 rounded-lg font-semibold text-sm uppercase tracking-wider hover:bg-green-700 transition-colors"
                 >
                   Send via WhatsApp
                 </button>

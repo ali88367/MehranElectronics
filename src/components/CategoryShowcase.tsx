@@ -21,7 +21,7 @@ export function CategoryShowcase() {
             >
               Explore Categories
             </motion.h2>
-            <div className="h-1 w-16 bg-luxury-charcoal" />
+            <div className="h-1 w-16 bg-brand" />
           </div>
         </div>
 

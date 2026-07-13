@@ -12,3 +12,11 @@ export const formatPrice = (price: number) => {
     maximumFractionDigits: 0,
   }).format(price);
 };
+
+// Product data has mixed capitalization across sources — normalize each
+// feature bullet to a consistent, capitalized sentence fragment for display.
+export const formatFeature = (feature: string) => {
+  const trimmed = feature.trim().replace(/\.$/, '');
+  if (!trimmed) return trimmed;
+  return trimmed.charAt(0).toUpperCase() + trimmed.slice(1);
+};

@@ -16,7 +16,7 @@ const VALUES = [
 
 export function Marquee() {
   return (
-    <div className="bg-luxury-charcoal text-white py-4 overflow-hidden border-b border-white/10">
+    <div className="bg-brand text-white py-4 overflow-hidden border-b border-white/10">
       <div className="flex whitespace-nowrap">
         <motion.div 
           className="flex space-x-12 px-6"

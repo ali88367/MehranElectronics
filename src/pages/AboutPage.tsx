@@ -36,8 +36,8 @@ export function AboutPage() {
   return (
     <div className="min-h-screen bg-white">
       {/* Hero */}
-      <div className="relative h-[40vh] min-h-[320px] bg-luxury-charcoal overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-luxury-charcoal to-gray-900" />
+      <div className="relative h-[40vh] min-h-[320px] bg-luxury-black overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-br from-luxury-black to-brand-dark" />
         <div className="relative z-10 container mx-auto px-6 h-full flex flex-col justify-end pb-12">
           <Link to="/" className="inline-flex items-center text-sm text-white/60 hover:text-white mb-6 transition-colors w-fit">
             <ArrowLeft className="w-4 h-4 mr-2" />
@@ -46,7 +46,7 @@ export function AboutPage() {
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="font-serif text-3xl md:text-4xl text-white mb-3"
+            className="text-3xl md:text-4xl font-semibold text-white mb-3"
           >
             About New Mehran
           </motion.h1>
@@ -54,7 +54,7 @@ export function AboutPage() {
             initial={{ opacity: 0, width: 0 }}
             animate={{ opacity: 1, width: '60px' }}
             transition={{ delay: 0.2 }}
-            className="h-1 bg-luxury-gold"
+            className="h-1 bg-brand"
           />
         </div>
       </div>
@@ -68,8 +68,8 @@ export function AboutPage() {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
             >
-              <span className="text-sm uppercase tracking-[0.3em] text-luxury-gold mb-4 block">Our Story</span>
-              <h2 className="font-serif text-2xl md:text-3xl text-luxury-charcoal mb-8 leading-tight">
+              <span className="text-sm uppercase tracking-[0.3em] text-brand mb-4 block">Our Story</span>
+              <h2 className="text-2xl md:text-3xl font-semibold text-luxury-charcoal mb-8 leading-tight">
                 Where Technology Meets Trust
               </h2>
               <div className="space-y-6 text-gray-500 leading-relaxed">
@@ -91,16 +91,16 @@ export function AboutPage() {
               viewport={{ once: true }}
               className="relative"
             >
-              <div className="aspect-[4/5] bg-gray-100 rounded-2xl overflow-hidden">
+              <div className="aspect-[4/5] bg-white border border-gray-100 rounded-2xl overflow-hidden p-6">
                 <img
                   src="/banner11.png"
                   alt="New Mehran Electronics Store"
-                  className="w-full h-full object-cover"
+                  className="w-full h-full object-contain"
                 />
               </div>
-              <div className="absolute -bottom-8 -left-8 bg-luxury-charcoal text-white p-8 rounded-xl shadow-2xl hidden md:block">
-                <p className="font-serif text-4xl text-luxury-gold mb-1">10+</p>
-                <p className="text-sm text-gray-400 uppercase tracking-wider">Years of Trust</p>
+              <div className="absolute -bottom-8 -left-8 bg-brand text-white p-8 rounded-xl shadow-2xl hidden md:block">
+                <p className="text-4xl font-bold mb-1">10+</p>
+                <p className="text-sm text-white/70 uppercase tracking-wider">Years of Trust</p>
               </div>
             </motion.div>
           </div>
@@ -115,7 +115,7 @@ export function AboutPage() {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="font-serif text-2xl md:text-3xl text-luxury-charcoal mb-4"
+              className="text-2xl md:text-3xl font-semibold text-luxury-charcoal mb-4"
             >
               Why Choose New Mehran
             </motion.h2>
@@ -123,7 +123,7 @@ export function AboutPage() {
               initial={{ opacity: 0, width: 0 }}
               whileInView={{ opacity: 1, width: '60px' }}
               viewport={{ once: true }}
-              className="h-1 bg-luxury-charcoal mx-auto"
+              className="h-1 bg-brand mx-auto"
             />
           </div>
 
@@ -137,10 +137,10 @@ export function AboutPage() {
                 transition={{ delay: index * 0.1 }}
                 className="bg-white p-8 rounded-xl text-center group hover:shadow-xl transition-shadow duration-300"
               >
-                <div className="w-16 h-16 bg-luxury-charcoal/5 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:bg-luxury-charcoal group-hover:text-white transition-all duration-300">
+                <div className="w-16 h-16 bg-brand/5 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:bg-brand group-hover:text-white transition-all duration-300">
                   <value.icon className="w-7 h-7" />
                 </div>
-                <h3 className="font-serif text-xl text-luxury-charcoal mb-3">{value.title}</h3>
+                <h3 className="text-xl font-semibold text-luxury-charcoal mb-3">{value.title}</h3>
                 <p className="text-gray-500 text-sm leading-relaxed">{value.description}</p>
               </motion.div>
             ))}
@@ -149,27 +149,27 @@ export function AboutPage() {
       </section>
 
       {/* CTA */}
-      <section className="py-24 bg-luxury-charcoal text-white text-center">
+      <section className="py-24 bg-brand text-white text-center">
         <div className="container mx-auto px-6">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
           >
-            <h2 className="font-serif text-2xl md:text-3xl mb-6">Ready to Upgrade Your Home?</h2>
-            <p className="text-gray-400 text-lg mb-10 max-w-lg mx-auto">
+            <h2 className="text-2xl md:text-3xl font-semibold mb-6">Ready to Upgrade Your Home?</h2>
+            <p className="text-white/80 text-lg mb-10 max-w-lg mx-auto">
               Visit our store or browse our collection online. We're here to help you find the perfect fit.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link
                 to="/collection"
-                className="px-10 py-4 bg-white text-luxury-charcoal font-semibold text-sm uppercase tracking-wider rounded-lg hover:bg-gray-100 transition-colors"
+                className="px-10 py-4 bg-white text-brand font-semibold text-sm uppercase tracking-wider rounded-lg hover:bg-gray-100 transition-colors"
               >
                 Browse Collection
               </Link>
               <Link
                 to="/contact"
-                className="px-10 py-4 border border-white/30 font-semibold text-sm uppercase tracking-wider rounded-lg hover:bg-white hover:text-luxury-charcoal transition-all"
+                className="px-10 py-4 border border-white/30 font-semibold text-sm uppercase tracking-wider rounded-lg hover:bg-white hover:text-brand transition-all"
               >
                 Contact Us
               </Link>

@@ -40,7 +40,7 @@ export function Hero() {
   const prevSlide = () => setCurrentSlide((prev) => (prev - 1 + SLIDES.length) % SLIDES.length);
 
   return (
-    <section className="relative h-dvh w-full overflow-hidden bg-luxury-charcoal">
+    <section className="relative w-full overflow-hidden bg-luxury-charcoal aspect-[16/10] sm:aspect-auto sm:h-dvh mt-[60px] lg:mt-0">
       <AnimatePresence mode="wait">
         <motion.div
           key={currentSlide}
@@ -48,14 +48,14 @@ export function Hero() {
           animate={{ opacity: 1, scale: 1 }}
           exit={{ opacity: 0 }}
           transition={{ duration: 1.5, ease: 'easeOut' }}
-          className="absolute inset-0"
+          className="absolute inset-0 sm:p-6 md:p-10 lg:p-0"
         >
           <div
-            className="absolute inset-0 bg-cover bg-center"
+            className="absolute inset-0 sm:inset-6 md:inset-10 lg:inset-0 bg-contain lg:bg-cover bg-center bg-no-repeat sm:rounded-xl md:rounded-2xl lg:rounded-none"
             style={{ backgroundImage: `url(${current.image})` }}
           />
           {current.content && (
-            <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/40 to-transparent" />
+            <div className="absolute inset-0 sm:inset-6 md:inset-10 lg:inset-0 bg-gradient-to-r from-black/70 via-black/40 to-transparent sm:rounded-xl md:rounded-2xl lg:rounded-none" />
           )}
         </motion.div>
       </AnimatePresence>

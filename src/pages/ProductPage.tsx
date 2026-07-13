@@ -3,7 +3,7 @@ import { useParams, Link, useLocation } from 'react-router-dom';
 import { motion } from 'motion/react';
 import { MessageCircle, Check, Truck, ShieldCheck, ArrowLeft } from 'lucide-react';
 import { useProducts } from '@/hooks/useProducts';
-import { formatPrice } from '@/lib/utils';
+import { formatPrice, formatFeature } from '@/lib/utils';
 import { ProductCard } from '@/components/ProductGrid';
 
 export function ProductPage() {
@@ -53,11 +53,11 @@ export function ProductPage() {
             transition={{ duration: 0.8 }}
             className="space-y-6"
           >
-            <div className="aspect-[4/5] bg-gray-100 rounded-2xl overflow-hidden shadow-sm">
+            <div className="aspect-square bg-white border border-gray-100 rounded-2xl overflow-hidden shadow-sm p-8">
               <img
                 src={product.image}
                 alt={product.name}
-                className="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
+                className="w-full h-full object-contain hover:scale-105 transition-transform duration-700"
               />
             </div>
           </motion.div>
@@ -89,8 +89,8 @@ export function ProductPage() {
               <ul className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 {product.features.map((feature, idx) => (
                   <li key={idx} className="flex items-center space-x-3 text-gray-600">
-                    <span className="w-1.5 h-1.5 bg-luxury-charcoal rounded-full" />
-                    <span>{feature}</span>
+                    <span className="w-1.5 h-1.5 bg-brand rounded-full shrink-0" />
+                    <span>{formatFeature(feature)}</span>
                   </li>
                 ))}
               </ul>
@@ -101,7 +101,7 @@ export function ProductPage() {
                 href={`https://wa.me/923126610110?text=${whatsappMessage}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex-1 bg-luxury-charcoal text-white py-4 px-8 rounded-lg flex items-center justify-center space-x-3 hover:bg-black transition-all shadow-lg hover:shadow-xl"
+                className="flex-1 bg-green-600 text-white py-4 px-8 rounded-lg flex items-center justify-center space-x-3 hover:bg-green-700 transition-all shadow-lg hover:shadow-xl"
               >
                 <MessageCircle className="w-5 h-5" />
                 <span className="uppercase tracking-widest font-semibold text-sm">Order on WhatsApp</span>
@@ -129,7 +129,7 @@ export function ProductPage() {
         {relatedProducts.length > 0 && (
           <section className="mt-24 pt-16 border-t border-gray-100">
             <h2 className="font-serif text-2xl text-luxury-charcoal mb-2">You May Also Like</h2>
-            <div className="h-1 w-16 bg-luxury-charcoal mb-12" />
+            <div className="h-1 w-16 bg-brand mb-12" />
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
               {relatedProducts.map((p, index) => (
                 <motion.div
