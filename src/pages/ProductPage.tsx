@@ -5,6 +5,7 @@ import { MessageCircle, Check, Truck, ShieldCheck, ArrowLeft } from 'lucide-reac
 import { useProducts } from '@/hooks/useProducts';
 import { formatPrice, formatFeature } from '@/lib/utils';
 import { ProductCard } from '@/components/ProductGrid';
+import { CATEGORIES } from '@/data/mock';
 
 export function ProductPage() {
   const { id } = useParams();
@@ -28,6 +29,7 @@ export function ProductPage() {
   }
 
   const relatedProducts = PRODUCTS.filter(p => p.category === product.category && p.id !== product.id).slice(0, 4);
+  const categoryId = CATEGORIES.find(c => c.name === product.category)?.id;
 
   const whatsappMessage = encodeURIComponent(
     `Hello New Mehran Electronics!\n\nI would like to order:\n\n*Product:* ${product.name}${product.model ? `\n*Model:* ${product.model}` : ''}\n*Price:* ${formatPrice(product.price)}\n\nPlease confirm availability.`
@@ -40,7 +42,11 @@ export function ProductPage() {
         <nav className="flex items-center gap-2 text-sm text-gray-400 mb-8">
           <Link to="/" className="hover:text-luxury-charcoal transition-colors">Home</Link>
           <span>/</span>
-          <Link to="/collection" className="hover:text-luxury-charcoal transition-colors">{product.category}</Link>
+          {categoryId ? (
+            <Link to={`/category/${categoryId}`} className="hover:text-luxury-charcoal transition-colors">{product.category}</Link>
+          ) : (
+            <span>{product.category}</span>
+          )}
           <span>/</span>
           <span className="text-luxury-charcoal">{product.name}</span>
         </nav>

@@ -36,17 +36,17 @@ export function AboutPage() {
   return (
     <div className="min-h-screen bg-white">
       {/* Hero */}
-      <div className="relative h-[40vh] min-h-[320px] bg-luxury-black overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-luxury-black to-brand-dark" />
+      <div className="relative h-[40vh] min-h-[320px] bg-white overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-br from-brand-light to-white" />
         <div className="relative z-10 container mx-auto px-6 h-full flex flex-col justify-end pb-12">
-          <Link to="/" className="inline-flex items-center text-sm text-white/60 hover:text-white mb-6 transition-colors w-fit">
+          <Link to="/" className="inline-flex items-center text-sm text-gray-500 hover:text-brand mb-6 transition-colors w-fit">
             <ArrowLeft className="w-4 h-4 mr-2" />
             Back to Home
           </Link>
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="text-3xl md:text-4xl font-semibold text-white mb-3"
+            className="text-3xl md:text-4xl font-semibold text-luxury-charcoal mb-3"
           >
             About New Mehran
           </motion.h1>
@@ -162,10 +162,10 @@ export function AboutPage() {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link
-                to="/collection"
+                to="/category/home-appliances"
                 className="px-10 py-4 bg-white text-brand font-semibold text-sm uppercase tracking-wider rounded-lg hover:bg-gray-100 transition-colors"
               >
-                Browse Collection
+                Browse Categories
               </Link>
               <Link
                 to="/contact"

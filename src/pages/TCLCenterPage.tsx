@@ -97,7 +97,7 @@ export function TCLCenterPage() {
                 <span>Get in Touch</span>
               </a>
               <Link
-                to="/collection"
+                to="/category/tv"
                 className="inline-flex items-center justify-center gap-2.5 px-8 py-4 border-2 border-white/40 text-white text-sm font-semibold uppercase tracking-wider hover:bg-white hover:text-gray-900 transition-all duration-300 rounded"
               >
                 <span>Explore Products</span>
@@ -274,7 +274,9 @@ export function TCLCenterPage() {
                     />
                   </div>
                   <div className="p-4">
-                    <p className="text-xs text-gray-400 uppercase tracking-wider mb-1">{product.category}</p>
+                    <p className="text-xs text-gray-400 uppercase tracking-wider mb-1">
+                      {product.category}{product.model ? ` · ${product.model}` : ''}
+                    </p>
                     <h3 className="text-sm font-semibold text-gray-900 mb-2 line-clamp-2 group-hover:text-[#E4002B] transition-colors">
                       {product.name}
                     </h3>
@@ -289,7 +291,7 @@ export function TCLCenterPage() {
 
           <div className="text-center mt-10">
             <Link
-              to="/collection"
+              to={`/category/${activeTab === 'tv' ? 'tv' : activeTab === 'ac' ? 'ac' : 'home-appliances'}`}
               className="inline-flex items-center gap-2 px-8 py-3 text-sm font-semibold uppercase tracking-wider rounded-full border-2 transition-all duration-300 hover:text-white"
               style={{ borderColor: TCL_RED, color: TCL_RED }}
               onMouseEnter={(e) => { e.currentTarget.style.backgroundColor = TCL_RED; e.currentTarget.style.color = 'white'; }}
@@ -359,7 +361,7 @@ export function TCLCenterPage() {
                 <p className="text-gray-500 mt-2">Handpicked from our TCL collection</p>
               </div>
               <Link
-                to="/collection"
+                to="/category/tv"
                 className="hidden md:flex items-center gap-2 text-sm font-semibold hover:gap-3 transition-all"
                 style={{ color: TCL_RED }}
               >
@@ -391,7 +393,9 @@ export function TCLCenterPage() {
                         <h3 className="text-sm font-semibold text-gray-900 mb-1 line-clamp-1 group-hover:text-[#E4002B] transition-colors">
                           {product.name}
                         </h3>
-                        <p className="text-xs text-gray-400 mb-2">{product.category}</p>
+                        <p className="text-xs text-gray-400 mb-2">
+                          {product.category}{product.model ? ` · ${product.model}` : ''}
+                        </p>
                         <p className="text-base font-bold" style={{ color: TCL_RED }}>
                           {formatPrice(product.price)}
                         </p>
@@ -404,7 +408,7 @@ export function TCLCenterPage() {
 
             <div className="mt-8 text-center md:hidden">
               <Link
-                to="/collection"
+                to="/category/tv"
                 className="inline-flex items-center gap-2 text-sm font-semibold"
                 style={{ color: TCL_RED }}
               >

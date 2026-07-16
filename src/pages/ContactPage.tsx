@@ -15,17 +15,17 @@ export function ContactPage() {
   return (
     <div className="min-h-screen bg-white">
       {/* Hero */}
-      <div className="relative h-[35vh] min-h-[280px] bg-luxury-black overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-luxury-black to-brand-dark" />
+      <div className="relative h-[35vh] min-h-[280px] bg-white overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-br from-brand-light to-white" />
         <div className="relative z-10 container mx-auto px-6 h-full flex flex-col justify-end pb-12">
-          <Link to="/" className="inline-flex items-center text-sm text-white/60 hover:text-white mb-6 transition-colors w-fit">
+          <Link to="/" className="inline-flex items-center text-sm text-gray-500 hover:text-brand mb-6 transition-colors w-fit">
             <ArrowLeft className="w-4 h-4 mr-2" />
             Back to Home
           </Link>
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="text-3xl md:text-4xl font-semibold text-white mb-3"
+            className="text-3xl md:text-4xl font-semibold text-luxury-charcoal mb-3"
           >
             Get in Touch
           </motion.h1>
@@ -33,7 +33,7 @@ export function ContactPage() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1 }}
-            className="text-white/60 text-lg"
+            className="text-gray-500 text-lg"
           >
             We'd love to hear from you
           </motion.p>

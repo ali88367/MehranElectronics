@@ -46,7 +46,9 @@ export function ProductCard({ product }: ProductCardProps) {
         <h3 className="text-base text-luxury-charcoal mb-1 line-clamp-1 group-hover:text-brand transition-colors">
           {product.name}
         </h3>
-        <p className="text-sm font-medium text-gray-500 mb-2 line-clamp-1">{product.category}</p>
+        <p className="text-sm font-medium text-gray-500 mb-1 line-clamp-1">
+          {product.category}{product.model ? ` · ${product.model}` : ''}
+        </p>
         <p className="font-semibold text-luxury-charcoal">{formatPrice(product.price)}</p>
       </div>
     </Link>

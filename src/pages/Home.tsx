@@ -25,7 +25,7 @@ function HomeSearchBar({ products }: { products: Product[] }) {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    if (query.trim()) navigate(`/collection?search=${encodeURIComponent(query.trim())}`);
+    if (results[0]) navigate(`/product/${results[0].id}`);
   };
 
   return (
@@ -111,7 +111,7 @@ export function Home() {
 
       {/* 2. Immediate product lineup + highly visible search */}
       <HomeSearchBar products={PRODUCTS} />
-      <ProductGrid title="Best Sellers" products={bestSellers} viewAllLink="/collection" />
+      <ProductGrid title="Best Sellers" products={bestSellers} />
 
       {/* 3. Clear categories to tap and filter */}
       <CategoryShowcase />

@@ -5,7 +5,7 @@ import { ArrowRight } from 'lucide-react';
 
 export function Spotlight() {
   return (
-    <section className="py-24 bg-black text-white overflow-hidden">
+    <section className="py-24 bg-white text-luxury-charcoal overflow-hidden">
       <div className="container mx-auto px-6">
         <div className="flex flex-col lg:flex-row items-center gap-16">
           
@@ -28,15 +28,15 @@ export function Spotlight() {
               className="font-serif text-5xl md:text-7xl leading-none mb-8"
             >
               The Future <br />
-              <span className="text-gray-500 italic">of Cooling</span>
+              <span className="text-gray-400 italic">of Cooling</span>
             </motion.h2>
-            
-            <motion.p 
+
+            <motion.p
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.2 }}
-              className="text-gray-400 text-lg leading-relaxed mb-10 max-w-md"
+              className="text-gray-500 text-lg leading-relaxed mb-10 max-w-md"
             >
               Experience the Arctic Pro Series. AI-driven climate control that adapts to your life, ensuring perfect comfort with whisper-quiet operation.
             </motion.p>
@@ -51,7 +51,7 @@ export function Spotlight() {
                 to="/category/ac"
                 className="inline-flex items-center space-x-4 group"
               >
-                <div className="w-12 h-12 rounded-full border border-white/30 flex items-center justify-center group-hover:bg-white group-hover:text-black transition-all duration-300">
+                <div className="w-12 h-12 rounded-full border border-gray-300 flex items-center justify-center group-hover:bg-luxury-charcoal group-hover:text-white transition-all duration-300">
                   <ArrowRight className="w-5 h-5" />
                 </div>
                 <span className="uppercase tracking-widest text-sm font-medium">Discover the Series</span>
@@ -76,8 +76,8 @@ export function Spotlight() {
             </motion.div>
             
             {/* Decorative Elements */}
-            <div className="absolute -top-10 -right-10 w-64 h-64 border border-white/10 rounded-full animate-spin-slow" />
-            <div className="absolute -bottom-10 -left-10 w-40 h-40 border border-white/10 rounded-full animate-spin-reverse-slow" />
+            <div className="absolute -top-10 -right-10 w-64 h-64 border border-gray-200 rounded-full animate-spin-slow" />
+            <div className="absolute -bottom-10 -left-10 w-40 h-40 border border-gray-200 rounded-full animate-spin-reverse-slow" />
           </div>
         </div>
       </div>

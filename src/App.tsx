@@ -6,7 +6,6 @@ import { WhatsAppButton } from '@/components/WhatsAppButton';
 import { Home } from '@/pages/Home';
 import { ProductPage } from '@/pages/ProductPage';
 import { CategoryPage } from '@/pages/CategoryPage';
-import { CollectionPage } from '@/pages/CollectionPage';
 import { ContactPage } from '@/pages/ContactPage';
 import { AboutPage } from '@/pages/AboutPage';
 import { AdminPage } from '@/pages/AdminPage';
@@ -32,7 +31,6 @@ export default function App() {
             <Route path="/" element={<Home />} />
             <Route path="/product/:id" element={<ProductPage />} />
             <Route path="/category/:id" element={<CategoryPage />} />
-            <Route path="/collection" element={<CollectionPage />} />
             <Route path="/contact" element={<ContactPage />} />
             <Route path="/about" element={<AboutPage />} />
             <Route path="/admin" element={<AdminPage />} />

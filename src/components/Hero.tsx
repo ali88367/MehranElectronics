@@ -7,11 +7,11 @@ import { cn } from '@/lib/utils';
 const SLIDES = [
   {
     id: 1,
-    image: '/banner11.png',
+    image: '/b22.png',
     heading: 'Orchestrating the Art of Living',
     subtext: 'A symphony of design and performance, curated for the uncompromising.',
     buttonText: 'Explore Collection',
-    link: '/collection',
+    link: '/',
     content: false
   },
   {

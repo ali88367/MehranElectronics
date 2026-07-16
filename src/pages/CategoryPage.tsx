@@ -72,7 +72,7 @@ export function CategoryPage() {
   return (
     <div className="min-h-screen bg-white">
       {/* Hero Banner */}
-      <div className="relative h-[40vh] min-h-[320px] bg-luxury-black overflow-hidden">
+      <div className="relative h-[40vh] min-h-[320px] bg-white overflow-hidden">
         {category && (
           <div
             className="absolute inset-0 bg-cover bg-center opacity-40"

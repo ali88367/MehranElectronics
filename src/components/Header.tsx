@@ -36,7 +36,6 @@ export function Header() {
     { name: 'Refrigerators', href: '/category/refrigerators' },
     { name: 'LED TVs', href: '/category/tv' },
     { name: 'TCL Center', href: '/tcl-center' },
-    { name: 'All Products', href: '/collection' },
   ];
 
   const moreCategories = [
