@@ -94,12 +94,14 @@ export function Header() {
               <button onClick={() => setIsSearchOpen(true)} className="hover:opacity-70 transition-opacity">
                 <Search className="w-4 h-4" />
               </button>
-              <Link
-                to="/contact"
+              <a
+                href="https://wa.me/923126610110"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="px-5 py-2 bg-brand text-white text-[10px] font-semibold uppercase tracking-widest transition-all hover:bg-brand-dark"
               >
                 Contact
-              </Link>
+              </a>
             </div>
           </div>
         </div>
@@ -224,13 +226,15 @@ export function Header() {
                   <MessageCircle className="w-4 h-4" />
                   WhatsApp Order
                 </a>
-                <Link
-                  to="/contact"
+                <a
+                  href="https://wa.me/923126610110"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   onClick={() => setIsDrawerOpen(false)}
                   className="block text-center py-3.5 border border-brand text-brand uppercase tracking-widest text-xs font-semibold hover:bg-brand hover:text-white transition-all"
                 >
                   Contact Us
-                </Link>
+                </a>
               </div>
             </motion.div>
           </>

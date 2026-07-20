@@ -29,7 +29,7 @@ export function Footer() {
               <li><Link to="/" className="hover:text-brand transition-colors">Home</Link></li>
               <li><Link to="/about" className="hover:text-brand transition-colors">About Us</Link></li>
               <li><Link to="/tcl-center" className="hover:text-brand transition-colors">TCL Center</Link></li>
-              <li><Link to="/contact" className="hover:text-brand transition-colors">Contact</Link></li>
+              <li><a href="https://wa.me/923126610110" target="_blank" rel="noopener noreferrer" className="hover:text-brand transition-colors">Contact</a></li>
               <li><Link to="/faq" className="hover:text-brand transition-colors">FAQs</Link></li>
             </ul>
           </div>

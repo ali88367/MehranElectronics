@@ -167,12 +167,14 @@ export function AboutPage() {
               >
                 Browse Categories
               </Link>
-              <Link
-                to="/contact"
+              <a
+                href="https://wa.me/923126610110"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="px-10 py-4 border border-white/30 font-semibold text-sm uppercase tracking-wider rounded-lg hover:bg-white hover:text-brand transition-all"
               >
                 Contact Us
-              </Link>
+              </a>
             </div>
           </motion.div>
         </div>
