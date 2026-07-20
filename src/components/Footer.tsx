@@ -55,6 +55,10 @@ export function Footer() {
                 <MapPin className="w-5 h-5 mt-0.5 shrink-0" />
                 <span>TCL Center 7 Flagship Store, Main Market, Town</span>
               </li>
+              <li className="flex items-start space-x-3">
+                <MapPin className="w-5 h-5 mt-0.5 shrink-0" />
+                <span>Branch 2: Plot No. C-12, Model Town Commercial Market, near Sheel Petrol Pump, Multan</span>
+              </li>
               <li className="flex items-center space-x-3">
                 <Phone className="w-5 h-5 shrink-0" />
                 <a href="tel:+923126610110" className="hover:text-brand transition-colors">0312-6610110</a>
