@@ -1,8 +1,9 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { Plus, Trash2, Save, ArrowLeft, Image as ImageIcon, Upload, Search, Edit3, X, Check, AlertCircle, Download } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { CATEGORIES, type Product } from '@/data/mock';
+import bundledProducts from '@/data/products.json';
 
 interface ProductForm {
   id: string;
@@ -57,30 +58,14 @@ function productToForm(p: Product): ProductForm {
 }
 
 export function AdminPage() {
-  const [products, setProducts] = useState<Product[]>([]);
-  const [loading, setLoading] = useState(true);
+  const [products, setProducts] = useState<Product[]>(bundledProducts as unknown as Product[]);
   const [form, setForm] = useState<ProductForm>(emptyForm());
   const [editing, setEditing] = useState(false);
-  const [saving, setSaving] = useState(false);
   const [message, setMessage] = useState<{ type: 'success' | 'error'; text: string } | null>(null);
   const [searchQuery, setSearchQuery] = useState('');
   const [filterCategory, setFilterCategory] = useState<string>('all');
   const [deleteConfirm, setDeleteConfirm] = useState<string | null>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
-
-  useEffect(() => { loadProducts(); }, []);
-
-  async function loadProducts() {
-    try {
-      const res = await fetch('/api/products');
-      const data = await res.json();
-      setProducts(data);
-    } catch {
-      setProducts([]);
-    } finally {
-      setLoading(false);
-    }
-  }
 
   function showMessage(type: 'success' | 'error', text: string) {
     setMessage({ type, text });
@@ -135,61 +120,39 @@ export function AdminPage() {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 
-  async function handleSave() {
+  function handleSave() {
     if (!form.name.trim()) { showMessage('error', 'Product name is required'); return; }
     if (!form.price.trim()) { showMessage('error', 'Price is required'); return; }
     if (!form.imagePreview && !form.existingImage) { showMessage('error', 'Please upload an image'); return; }
 
-    setSaving(true);
-    try {
-      const body = {
-        id: form.id,
-        name: form.name.trim(),
-        model: form.model.trim(),
-        category: form.category,
-        price: parseInt(form.price) || 0,
-        description: form.description.trim(),
-        features: form.features.split(',').map(f => f.trim()).filter(Boolean),
-        isBestSeller: form.isBestSeller,
-        isFeatured: form.isFeatured,
-        imageData: form.imageData || undefined,
-        imageFileName: form.imageFileName || undefined,
-      };
+    const product: Product = {
+      id: form.id,
+      name: form.name.trim(),
+      model: form.model.trim(),
+      category: form.category,
+      price: parseInt(form.price) || 0,
+      image: form.imageData || form.existingImage,
+      description: form.description.trim(),
+      features: form.features.split(',').map(f => f.trim()).filter(Boolean),
+      isBestSeller: form.isBestSeller,
+      isFeatured: form.isFeatured,
+    };
 
-      const url = editing ? `/api/products/${form.id}` : '/api/products';
-      const method = editing ? 'PUT' : 'POST';
-
-      const res = await fetch(url, {
-        method,
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(body),
-      });
-
-      if (!res.ok) {
-        const err = await res.json();
-        throw new Error(err.error || 'Failed to save');
-      }
-
-      showMessage('success', editing ? 'Product updated!' : 'Product added!');
-      resetForm();
-      await loadProducts();
-    } catch (err: any) {
-      showMessage('error', err.message || 'Failed to save product');
-    } finally {
-      setSaving(false);
+    if (editing) {
+      setProducts(prev => prev.map(p => (p.id === product.id ? product : p)));
+      showMessage('success', 'Product updated! Export JSON when you\'re done.');
+    } else {
+      setProducts(prev => [product, ...prev]);
+      showMessage('success', 'Product added! Export JSON when you\'re done.');
     }
+    resetForm();
   }
 
-  async function handleDelete(id: string) {
-    try {
-      await fetch(`/api/products/${id}`, { method: 'DELETE' });
-      showMessage('success', 'Product deleted');
-      setDeleteConfirm(null);
-      if (editing && form.id === id) resetForm();
-      await loadProducts();
-    } catch {
-      showMessage('error', 'Failed to delete product');
-    }
+  function handleDelete(id: string) {
+    setProducts(prev => prev.filter(p => p.id !== id));
+    showMessage('success', 'Product removed. Export JSON when you\'re done.');
+    setDeleteConfirm(null);
+    if (editing && form.id === id) resetForm();
   }
 
   async function handleExport() {
@@ -248,7 +211,7 @@ export function AdminPage() {
             <div>
               <h1 className="font-serif text-3xl md:text-4xl text-luxury-charcoal mb-1">Product Manager</h1>
               <p className="text-gray-500">
-                {products.length} product{products.length !== 1 ? 's' : ''} in database
+                {products.length} product{products.length !== 1 ? 's' : ''}
               </p>
             </div>
             <div className="flex items-center gap-3">
@@ -256,7 +219,7 @@ export function AdminPage() {
                 onClick={handleExport}
                 disabled={products.length === 0}
                 className="flex items-center gap-2 px-5 py-2.5 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 transition-colors text-sm font-medium disabled:opacity-40 disabled:cursor-not-allowed"
-                title="Download products.json for Netlify deployment"
+                title="Download products.json to send to your developer"
               >
                 <Download className="w-4 h-4" />
                 Export JSON
@@ -269,6 +232,9 @@ export function AdminPage() {
                 Add Product
               </button>
             </div>
+          </div>
+          <div className="mt-4 px-4 py-3 rounded-lg bg-amber-50 border border-amber-200 text-sm text-amber-800">
+            Changes you make here stay in this browser only. When you're done adding, editing, or removing products, click <strong>Export JSON</strong> and send the downloaded file to your developer to publish the changes on the live site.
           </div>
         </div>
 
@@ -430,14 +396,10 @@ export function AdminPage() {
               <div className="md:col-span-2">
                 <button
                   onClick={handleSave}
-                  disabled={saving}
-                  className={cn(
-                    'flex items-center justify-center gap-2 px-8 py-3 rounded-lg text-sm font-medium transition-all w-full md:w-auto',
-                    saving ? 'bg-gray-300 text-gray-500 cursor-not-allowed' : 'bg-brand text-white hover:bg-brand-dark'
-                  )}
+                  className="flex items-center justify-center gap-2 px-8 py-3 rounded-lg text-sm font-medium transition-all w-full md:w-auto bg-brand text-white hover:bg-brand-dark"
                 >
                   <Save className="w-4 h-4" />
-                  {saving ? 'Saving...' : editing ? 'Update Product' : 'Save Product'}
+                  {editing ? 'Update Product' : 'Save Product'}
                 </button>
               </div>
             </div>
@@ -472,9 +434,7 @@ export function AdminPage() {
             </div>
           </div>
 
-          {loading ? (
-            <div className="text-center py-16 text-gray-400">Loading products...</div>
-          ) : filteredProducts.length === 0 ? (
+          {filteredProducts.length === 0 ? (
             <div className="text-center py-16">
               <ImageIcon className="w-12 h-12 text-gray-200 mx-auto mb-4" />
               <p className="text-gray-400 text-lg mb-1">
