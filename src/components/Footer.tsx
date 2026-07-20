@@ -53,10 +53,6 @@ export function Footer() {
             <ul className="space-y-4 text-sm text-gray-500">
               <li className="flex items-start space-x-3">
                 <MapPin className="w-5 h-5 mt-0.5 shrink-0" />
-                <span>TCL Center 7 Flagship Store, Main Market, Town</span>
-              </li>
-              <li className="flex items-start space-x-3">
-                <MapPin className="w-5 h-5 mt-0.5 shrink-0" />
                 <span>Branch 2: Plot No. C-12, Model Town Commercial Market, near Sheel Petrol Pump, Multan</span>
               </li>
               <li className="flex items-center space-x-3">
