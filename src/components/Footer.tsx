@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Facebook, Instagram, Twitter, MapPin, Phone, Mail } from 'lucide-react';
+import { Facebook, Instagram, MapPin, Phone, Mail, Music2 } from 'lucide-react';
 
 export function Footer() {
   return (
@@ -16,9 +16,15 @@ export function Footer() {
               New Mehran Electronics is not just a store; it is a destination for those who seek the exceptional. We bridge the gap between cutting-edge technology and timeless elegance.
             </p>
             <div className="flex space-x-4">
-              <a href="#" className="text-gray-500 hover:text-brand transition-colors"><Facebook className="w-5 h-5" /></a>
-              <a href="#" className="text-gray-500 hover:text-brand transition-colors"><Instagram className="w-5 h-5" /></a>
-              <a href="#" className="text-gray-500 hover:text-brand transition-colors"><Twitter className="w-5 h-5" /></a>
+              <a href="https://web.facebook.com/p/New-Mehran-Electronics-100069030254081/?_rdc=1&_rdr#" target="_blank" rel="noopener noreferrer" aria-label="Facebook" className="text-gray-500 hover:text-brand transition-colors">
+                <Facebook className="w-5 h-5" />
+              </a>
+              <a href="https://www.instagram.com/new_mehran_electronics/" target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="text-gray-500 hover:text-brand transition-colors">
+                <Instagram className="w-5 h-5" />
+              </a>
+              <a href="https://www.tiktok.com/@mehranelectronics.11/" target="_blank" rel="noopener noreferrer" aria-label="TikTok" className="text-gray-500 hover:text-brand transition-colors">
+                <Music2 className="w-5 h-5" />
+              </a>
             </div>
           </div>
 
@@ -41,6 +47,7 @@ export function Footer() {
               <li><Link to="/category/ac" className="hover:text-brand transition-colors">Air Conditioners</Link></li>
               <li><Link to="/category/refrigerators" className="hover:text-brand transition-colors">Refrigerators</Link></li>
               <li><Link to="/category/tv" className="hover:text-brand transition-colors">LED TVs</Link></li>
+              <li><Link to="/category/kitchen" className="hover:text-brand transition-colors">Kitchen Appliances</Link></li>
               <li><Link to="/category/washing-machine" className="hover:text-brand transition-colors">Washing Machines</Link></li>
               <li><Link to="/category/home-appliances" className="hover:text-brand transition-colors">Home Appliances</Link></li>
               <li><Link to="/category/deep-freeze" className="hover:text-brand transition-colors">Deep Freezers</Link></li>
@@ -53,7 +60,16 @@ export function Footer() {
             <ul className="space-y-4 text-sm text-gray-500">
               <li className="flex items-start space-x-3">
                 <MapPin className="w-5 h-5 mt-0.5 shrink-0" />
-                <span>Branch 2: Plot No. C-12, Model Town Commercial Market, near Sheel Petrol Pump, Multan</span>
+                <div className="space-y-3">
+                  <div className="leading-relaxed">
+                    <span className="font-semibold text-luxury-charcoal">Branch 1:</span>{' '}
+                    <span className="block mt-1">Hussain Agahi Road, Multan</span>
+                  </div>
+                  <div className="leading-relaxed">
+                    <span className="font-semibold text-luxury-charcoal">Branch 2:</span>{' '}
+                    <span className="block mt-1">Plot No. C-12, Model Town Commercial Market, near Sheel Petrol Pump, Multan</span>
+                  </div>
+                </div>
               </li>
               <li className="flex items-center space-x-3">
                 <Phone className="w-5 h-5 shrink-0" />

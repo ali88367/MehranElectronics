@@ -43,6 +43,11 @@ export const CATEGORIES = [
     image: '/categories/wm.png',
   },
   {
+    id: 'kitchen',
+    name: 'Kitchen Appliances',
+    image: '/1.png',
+  },
+  {
     id: 'fan',
     name: 'Fans',
     image: '/1.png',
